@@ -1,0 +1,38 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+#
+# Complete the 'insertionSort1' function below.
+#
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER_ARRAY arr
+#
+
+def insertionSort1(n, arr):
+    
+    for unsrted in range(1, n):
+        key = arr[unsrted]
+        srted = unsrted-1
+        
+        while srted >= 0 and key < arr[srted]:
+            arr[srted+1] = arr[srted]
+            srted = srted-1
+            print(str(arr).replace('[', '').replace(',', '').replace(']', ''))
+            
+        arr[srted+1]= key
+    print(str(arr).replace('[', '').replace(',', '').replace(']', ''))
+   
+   
+    
+
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort1(n, arr)
