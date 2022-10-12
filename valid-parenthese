@@ -1,0 +1,13 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack= []
+        parenthese={")":"(", "}":"{", "]":"["}
+        
+        for i in s:
+            if i in parenthese.values():
+                stack.append(i)
+            elif stack and parenthese[i] == stack[-1]:
+                stack.pop()
+            else:
+                return False
+        return stack == []
