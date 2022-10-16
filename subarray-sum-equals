@@ -1,0 +1,17 @@
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        sumdict = {0:1}
+        n = len(nums)
+        ans = 0
+        pref = 0
+        
+        for num in nums:
+            pref += num
+            if pref-k in sumdict:
+                ans += sumdict[pref-k]
+            if pref in sumdict:
+                sumdict[pref] += 1
+            else:
+                sumdict[pref] =1
+            
+        return ans
