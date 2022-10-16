@@ -1,0 +1,24 @@
+class Solution:
+    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
+        if not nums or len(nums) == 0:
+            return 0
+        r =0
+        l=0
+        n = len(nums)
+        odd_cnt = 0
+        nice_sub = 0
+        ans = 0
+        for r in range(0, n):
+            if nums[r] & 1:
+                odd_cnt +=1
+                nice_sub = 0
+                
+            while odd_cnt == k:
+                odd_cnt -= nums[l] & 1
+                
+                nice_sub +=1
+                l+=1
+                
+            ans += nice_sub
+            
+        return ans
